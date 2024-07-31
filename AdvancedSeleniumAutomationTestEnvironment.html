@@ -1,681 +1,702 @@
 <html><head><base href="https://seleniumautomationtestenviroement.com">
-<title>Advanced Selenium Automation Test Environment</title>
-<style>
-  :root {
-    --primary-color: #6200ee;
-    --secondary-color: #03dac6;
-    --background-color: #f5f5f5;
-    --text-color: #333333;
-    --card-background: #ffffff;
-    --error-color: #b00020;
-    --success-color: #4caf50;
-  }
+  <title>Advanced Selenium Automation Test Environment</title>
+  <style>
+    :root {
+      --primary-color: #6200ee;
+      --secondary-color: #03dac6;
+      --background-color: #f5f5f5;
+      --text-color: #333333;
+      --card-background: #ffffff;
+      --error-color: #b00020;
+      --success-color: #4caf50;
+    }
 
-  body {
-    font-family: 'Roboto', Arial, sans-serif;
-    line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--background-color);
-    margin: 0;
-    padding: 20px;
-  }
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--background-color);
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      flex: 1;
+    }
 
-  h1, h2, h3 {
-    color: var(--primary-color);
-  }
+    h1, h2, h3 {
+      color: var(--primary-color);
+    }
 
-  h1 {
-    text-align: center;
-    font-size: 2.5em;
-    margin-bottom: 30px;
-  }
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
 
-  .tabs {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-  }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
 
-  .tab {
-    padding: 10px 20px;
-    background-color: var(--card-background);
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: 1em;
-    margin: 5px;
-  }
+    .tab {
+      padding: 10px 20px;
+      background-color: var(--card-background);
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 1em;
+      margin: 5px;
+    }
 
-  .tab:hover, .tab.active {
-    background-color: var(--primary-color);
-    color: white;
-  }
+    .tab:hover, .tab.active {
+      background-color: var(--primary-color);
+      color: white;
+    }
 
-  .tab-content {
-    display: none;
-    background-color: var(--card-background);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
+    .tab-content {
+      display: none;
+      background-color: var(--card-background);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-  .tab-content.active {
-    display: block;
-  }
+    .tab-content.active {
+      display: block;
+    }
 
-  .element {
-    margin-bottom: 20px;
-  }
+    .element {
+      margin-bottom: 20px;
+    }
 
-  input[type="text"], input[type="email"], input[type="password"], select, textarea, button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1em;
-  }
+    input[type="text"], input[type="email"], input[type="password"], select, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1em;
+    }
 
-  button {
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+    button {
+      background-color: var(--secondary-color);
+      color: var(--text-color);
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-  button:hover {
-    background-color: #02b8a1;
-  }
+    button:hover {
+      background-color: #02b8a1;
+    }
 
-  #dynamicContent {
-    font-style: italic;
-    color: var(--primary-color);
-  }
+    #dynamicContent {
+      font-style: italic;
+      color: var(--primary-color);
+    }
 
-  .drag-drop-container {
-    border: 2px dashed #ccc;
-    padding: 20px;
-    text-align: center;
-    min-height: 100px;
-  }
+    .drag-drop-container {
+      border: 2px dashed #ccc;
+      padding: 20px;
+      text-align: center;
+      min-height: 100px;
+    }
 
-  .draggable {
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-    padding: 10px;
-    margin: 5px;
-    display: inline-block;
-    cursor: move;
-  }
+    .draggable {
+      background-color: var(--secondary-color);
+      color: var(--text-color);
+      padding: 10px;
+      margin: 5px;
+      display: inline-block;
+      cursor: move;
+    }
 
-  #progressBar {
-    width: 100%;
-    background-color: #e0e0e0;
-  }
+    #progressBar {
+      width: 100%;
+      background-color: #e0e0e0;
+    }
 
-  #progressBar div {
-    width: 0;
-    height: 30px;
-    background-color: var(--secondary-color);
-    transition: width 0.5s;
-  }
+    #progressBar div {
+      width: 0;
+      height: 30px;
+      background-color: var(--secondary-color);
+      transition: width 0.5s;
+    }
 
-  .error {
-    color: var(--error-color);
-  }
+    .error {
+      color: var(--error-color);
+    }
 
-  .success {
-    color: var(--success-color);
-  }
+    .success {
+      color: var(--success-color);
+    }
 
-  #tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
-  }
+    #tooltip {
+      position: relative;
+      display: inline-block;
+      border-bottom: 1px dotted black;
+    }
 
-  #tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
+    #tooltip .tooltiptext {
+      visibility: hidden;
+      width: 120px;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      margin-left: -60px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
 
-  #tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-  }
+    #tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
 
-  #modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4);
-  }
+    #modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+    }
 
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
-  }
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+    }
 
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
 
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
 
-  #iframeContainer {
-    width: 100%;
-    height: 300px;
-    border: 1px solid #ddd;
-  }
+    #iframeContainer {
+      width: 100%;
+      height: 300px;
+      border: 1px solid #ddd;
+    }
 
-  #fileUpload {
-    display: none;
-  }
+    #fileUpload {
+      display: none;
+    }
 
-  #fileUploadLabel {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-    cursor: pointer;
-    border-radius: 4px;
-  }
+    #fileUploadLabel {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: var(--secondary-color);
+      color: var(--text-color);
+      cursor: pointer;
+      border-radius: 4px;
+    }
 
-  #carousel {
-    width: 100%;
-    height: 200px;
-    position: relative;
-    overflow: hidden;
-  }
+    #carousel {
+      width: 100%;
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
 
-  .carousel-item {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    transition: transform 0.5s ease;
-  }
-</style>
+    .carousel-item {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      transition: transform 0.5s ease;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 10px;
+      background-color: var(--card-background);
+      margin-top: 20px;
+    }
+
+    .logo {
+      font-size: 0.8em;
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Advanced Selenium Automation Test Environment</h1>
-    
-    <div class="tabs">
-      <button class="tab active" onclick="openTab(event, 'basicElements')">Basic Elements</button>
-      <button class="tab" onclick="openTab(event, 'advancedInteractions')">Advanced Interactions</button>
-      <button class="tab" onclick="openTab(event, 'asyncOperations')">Async Operations</button>
-      <button class="tab" onclick="openTab(event, 'formValidation')">Form Validation</button>
-      <button class="tab" onclick="openTab(event, 'iframeAndPopup')">iFrame and Popup</button>
+<div class="container">
+  <h1>Advanced Selenium Automation Test Environment</h1>
+
+  <div class="tabs">
+    <button class="tab active" onclick="openTab(event, 'basicElements')">Basic Elements</button>
+    <button class="tab" onclick="openTab(event, 'advancedInteractions')">Advanced Interactions</button>
+    <button class="tab" onclick="openTab(event, 'asyncOperations')">Async Operations</button>
+    <button class="tab" onclick="openTab(event, 'formValidation')">Form Validation</button>
+    <button class="tab" onclick="openTab(event, 'iframeAndPopup')">iFrame and Popup</button>
+  </div>
+
+  <div id="basicElements" class="tab-content active">
+    <div class="element">
+      <h2>Text Input</h2>
+      <input type="text" id="textInput" placeholder="Enter text here">
     </div>
 
-    <div id="basicElements" class="tab-content active">
-      <div class="element">
-        <h2>Text Input</h2>
-        <input type="text" id="textInput" placeholder="Enter text here">
-      </div>
-      
-      <div class="element">
-        <h2>Dropdown</h2>
-        <select id="dropdown">
-          <option value="">Select an option</option>
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
-        </select>
-      </div>
-      
-      <div class="element">
-        <h2>Checkboxes</h2>
-        <input type="checkbox" id="checkbox1" name="checkbox1" value="checkbox1">
-        <label for="checkbox1">Checkbox 1</label><br>
-        <input type="checkbox" id="checkbox2" name="checkbox2" value="checkbox2">
-        <label for="checkbox2">Checkbox 2</label><br>
-        <input type="checkbox" id="checkbox3" name="checkbox3" value="checkbox3">
-        <label for="checkbox3">Checkbox 3</label>
-      </div>
-      
-      <div class="element">
-        <h2>Radio Buttons</h2>
-        <input type="radio" id="radio1" name="radioGroup" value="radio1">
-        <label for="radio1">Radio 1</label><br>
-        <input type="radio" id="radio2" name="radioGroup" value="radio2">
-        <label for="radio2">Radio 2</label><br>
-        <input type="radio" id="radio3" name="radioGroup" value="radio3">
-        <label for="radio3">Radio 3</label>
-      </div>
-      
-      <div class="element">
-        <h2>Button</h2>
-        <button id="clickButton">Click me!</button>
-      </div>
-      
-      <div class="element">
-        <h2>Dynamic Content</h2>
-        <p id="dynamicContent">This content will change.</p>
-      </div>
+    <div class="element">
+      <h2>Dropdown</h2>
+      <select id="dropdown">
+        <option value="">Select an option</option>
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+      </select>
     </div>
 
-    <div id="advancedInteractions" class="tab-content">
-      <div class="element">
-        <h2>Drag and Drop</h2>
-        <div class="drag-drop-container">
-          <div id="draggable1" class="draggable" draggable="true">Item 1</div>
-          <div id="draggable2" class="draggable" draggable="true">Item 2</div>
-          <div id="draggable3" class="draggable" draggable="true">Item 3</div>
-        </div>
-        <div id="dropZone" class="drag-drop-container" style="margin-top: 20px;">
-          Drop Zone
-        </div>
-      </div>
+    <div class="element">
+      <h2>Checkboxes</h2>
+      <input type="checkbox" id="checkbox1" name="checkbox1" value="checkbox1">
+      <label for="checkbox1">Checkbox 1</label><br>
+      <input type="checkbox" id="checkbox2" name="checkbox2" value="checkbox2">
+      <label for="checkbox2">Checkbox 2</label><br>
+      <input type="checkbox" id="checkbox3" name="checkbox3" value="checkbox3">
+      <label for="checkbox3">Checkbox 3</label>
+    </div>
 
-      <div class="element">
-        <h2>Slider</h2>
-        <input type="range" id="slider" min="0" max="100" value="50">
-        <p>Value: <span id="sliderValue">50</span></p>
-      </div>
+    <div class="element">
+      <h2>Radio Buttons</h2>
+      <input type="radio" id="radio1" name="radioGroup" value="radio1">
+      <label for="radio1">Radio 1</label><br>
+      <input type="radio" id="radio2" name="radioGroup" value="radio2">
+      <label for="radio2">Radio 2</label><br>
+      <input type="radio" id="radio3" name="radioGroup" value="radio3">
+      <label for="radio3">Radio 3</label>
+    </div>
 
-      <div class="element">
-        <h2>Date Picker</h2>
-        <input type="date" id="datePicker">
-      </div>
+    <div class="element">
+      <h2>Button</h2>
+      <button id="clickButton">Click me!</button>
+    </div>
 
-      <div class="element">
-        <h2>Color Picker</h2>
-        <input type="color" id="colorPicker">
-        <p>Selected color: <span id="selectedColor">#000000</span></p>
-      </div>
+    <div class="element">
+      <h2>Dynamic Content</h2>
+      <p id="dynamicContent">This content will change.</p>
+    </div>
+  </div>
 
-      <div class="element">
-        <h2>Tooltip</h2>
-        <div id="tooltip">
-          Hover over me
-          <span class="tooltiptext">This is a tooltip</span>
-        </div>
+  <div id="advancedInteractions" class="tab-content">
+    <div class="element">
+      <h2>Drag and Drop</h2>
+      <div class="drag-drop-container">
+        <div id="draggable1" class="draggable" draggable="true">Item 1</div>
+        <div id="draggable2" class="draggable" draggable="true">Item 2</div>
+        <div id="draggable3" class="draggable" draggable="true">Item 3</div>
+      </div>
+      <div id="dropZone" class="drag-drop-container" style="margin-top: 20px;">
+        Drop Zone
       </div>
     </div>
 
-    <div id="asyncOperations" class="tab-content">
-      <div class="element">
-        <h2>Delayed Button</h2>
-        <button id="delayedButton">Click for Delayed Action</button>
-        <p id="delayedResult"></p>
-      </div>
-
-      <div class="element">
-        <h2>Progress Bar</h2>
-        <div id="progressBar"><div></div></div>
-        <button id="startProgress">Start Progress</button>
-      </div>
-
-      <div class="element">
-        <h2>Load More Content</h2>
-        <div id="loadMoreContent"></div>
-        <button id="loadMoreButton">Load More</button>
-      </div>
+    <div class="element">
+      <h2>Slider</h2>
+      <input type="range" id="slider" min="0" max="100" value="50">
+      <p>Value: <span id="sliderValue">50</span></p>
     </div>
 
-    <div id="formValidation" class="tab-content">
-      <div class="element">
-        <h2>Registration Form</h2>
-        <form id="registrationForm">
-          <input type="text" id="username" placeholder="Username" required><br><br>
-          <input type="email" id="email" placeholder="Email" required><br><br>
-          <input type="password" id="password" placeholder="Password" required><br><br>
-          <input type="password" id="confirmPassword" placeholder="Confirm Password" required><br><br>
-          <button type="submit">Register</button>
-        </form>
-        <p id="formResult"></p>
-      </div>
-
-      <div class="element">
-        <h2>Live Form Validation</h2>
-        <form id="liveValidationForm">
-          <input type="text" id="nameInput" placeholder="Name (min 3 characters)" required><br>
-          <span id="nameError" class="error"></span><br>
-          <input type="email" id="emailInput" placeholder="Email" required><br>
-          <span id="emailError" class="error"></span><br>
-          <input type="tel" id="phoneInput" placeholder="Phone (10 digits)" required><br>
-          <span id="phoneError" class="error"></span><br>
-          <button type="submit">Submit</button>
-        </form>
-        <p id="liveValidationResult"></p>
-      </div>
+    <div class="element">
+      <h2>Date Picker</h2>
+      <input type="date" id="datePicker">
     </div>
 
-    <div id="iframeAndPopup" class="tab-content">
-      <div class="element">
-        <h2>iFrame</h2>
-        <div id="iframeContainer"></div>
-      </div>
+    <div class="element">
+      <h2>Color Picker</h2>
+      <input type="color" id="colorPicker">
+      <p>Selected color: <span id="selectedColor">#000000</span></p>
+    </div>
 
-      <div class="element">
-        <h2>Modal Popup</h2>
-        <button id="openModalBtn">Open Modal</button>
-        <div id="modal" class="modal">
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Modal Title</h2>
-            <p>This is the modal content.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="element">
-        <h2>File Upload</h2>
-        <input type="file" id="fileUpload" accept="image/*">
-        <label for="fileUpload" id="fileUploadLabel">Choose File</label>
-        <p id="fileUploadResult"></p>
-      </div>
-
-      <div class="element">
-        <h2>Carousel</h2>
-        <div id="carousel">
-          <div class="carousel-item">Item 1</div>
-          <div class="carousel-item">Item 2</div>
-          <div class="carousel-item">Item 3</div>
-        </div>
-        <button id="prevCarousel">Previous</button>
-        <button id="nextCarousel">Next</button>
+    <div class="element">
+      <h2>Tooltip</h2>
+      <div id="tooltip">
+        Hover over me
+        <span class="tooltiptext">This is a tooltip</span>
       </div>
     </div>
   </div>
 
-  <script>
-    // Tab functionality
-    function openTab(evt, tabName) {
-      var i, tabContent, tabLinks;
-      tabContent = document.getElementsByClassName("tab-content");
-      for (i = 0; i < tabContent.length; i++) {
-        tabContent[i].style.display = "none";
-      }
-      tabLinks = document.getElementsByClassName("tab");
-      for (i = 0; i < tabLinks.length; i++) {
-        tabLinks[i].className = tabLinks[i].className.replace(" active", "");
-      }
-      document.getElementById(tabName).style.display = "block";
-      evt.currentTarget.className += " active";
+  <div id="asyncOperations" class="tab-content">
+    <div class="element">
+      <h2>Delayed Button</h2>
+      <button id="delayedButton">Click for Delayed Action</button>
+      <p id="delayedResult"></p>
+    </div>
+
+    <div class="element">
+      <h2>Progress Bar</h2>
+      <div id="progressBar"><div></div></div>
+      <button id="startProgress">Start Progress</button>
+    </div>
+
+    <div class="element">
+      <h2>Load More Content</h2>
+      <div id="loadMoreContent"></div>
+      <button id="loadMoreButton">Load More</button>
+    </div>
+  </div>
+
+  <div id="formValidation" class="tab-content">
+    <div class="element">
+      <h2>Registration Form</h2>
+      <form id="registrationForm">
+        <input type="text" id="username" placeholder="Username" required><br><br>
+        <input type="email" id="email" placeholder="Email" required><br><br>
+        <input type="password" id="password" placeholder="Password" required><br><br>
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" required><br><br>
+        <button type="submit">Register</button>
+      </form>
+      <p id="formResult"></p>
+    </div>
+
+    <div class="element">
+      <h2>Live Form Validation</h2>
+      <form id="liveValidationForm">
+        <input type="text" id="nameInput" placeholder="Name (min 3 characters)" required><br>
+        <span id="nameError" class="error"></span><br>
+        <input type="email" id="emailInput" placeholder="Email" required><br>
+        <span id="emailError" class="error"></span><br>
+        <input type="tel" id="phoneInput" placeholder="Phone (10 digits)" required><br>
+        <span id="phoneError" class="error"></span><br>
+        <button type="submit">Submit</button>
+      </form>
+      <p id="liveValidationResult"></p>
+    </div>
+  </div>
+
+  <div id="iframeAndPopup" class="tab-content">
+    <div class="element">
+      <h2>iFrame</h2>
+      <div id="iframeContainer"></div>
+    </div>
+
+    <div class="element">
+      <h2>Modal Popup</h2>
+      <button id="openModalBtn">Open Modal</button>
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Modal Title</h2>
+          <p>This is the modal content.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="element">
+      <h2>File Upload</h2>
+      <input type="file" id="fileUpload" accept="image/*">
+      <label for="fileUpload" id="fileUploadLabel">Choose File</label>
+      <p id="fileUploadResult"></p>
+    </div>
+
+    <div class="element">
+      <h2>Carousel</h2>
+      <div id="carousel">
+        <div class="carousel-item">Item 1</div>
+        <div class="carousel-item">Item 2</div>
+        <div class="carousel-item">Item 3</div>
+      </div>
+      <button id="prevCarousel">Previous</button>
+      <button id="nextCarousel">Next</button>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <a href="https://example.com/muresan-vlad" class="logo">By Muresan Vlad</a>
+</footer>
+
+<script>
+  // Tab functionality
+  function openTab(evt, tabName) {
+    var i, tabContent, tabLinks;
+    tabContent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabContent.length; i++) {
+      tabContent[i].style.display = "none";
     }
+    tabLinks = document.getElementsByClassName("tab");
+    for (i = 0; i < tabLinks.length; i++) {
+      tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
 
-    // Dynamic content change
-    const dynamicContent = document.getElementById('dynamicContent');
-    const contents = [
-      "Content has changed!",
-      "New dynamic text!",
-      "Another update!",
-      "Keep testing!"
-    ];
-    let contentIndex = 0;
+  // Dynamic content change
+  const dynamicContent = document.getElementById('dynamicContent');
+  const contents = [
+    "Content has changed!",
+    "New dynamic text!",
+    "Another update!",
+    "Keep testing!"
+  ];
+  let contentIndex = 0;
 
-    setInterval(() => {
-      dynamicContent.textContent = contents[contentIndex];
-      contentIndex = (contentIndex + 1) % contents.length;
-    }, 5000);
+  setInterval(() => {
+    dynamicContent.textContent = contents[contentIndex];
+    contentIndex = (contentIndex + 1) % contents.length;
+  }, 5000);
 
-    // Button click event
-    const clickButton = document.getElementById('clickButton');
-    clickButton.addEventListener('click', () => {
-      alert('Button clicked!');
+  // Button click event
+  const clickButton = document.getElementById('clickButton');
+  clickButton.addEventListener('click', () => {
+    alert('Button clicked!');
+  });
+
+  // Dropdown change event
+  const dropdown = document.getElementById('dropdown');
+  dropdown.addEventListener('change', (e) => {
+    console.log('Selected option:', e.target.value);
+  });
+
+  // Text input event
+  const textInput = document.getElementById('textInput');
+  textInput.addEventListener('input', (e) => {
+    console.log('Input value:', e.target.value);
+  });
+
+  // Drag and Drop
+  const draggables = document.querySelectorAll('.draggable');
+  const dropZone = document.getElementById('dropZone');
+
+  draggables.forEach(draggable => {
+    draggable.addEventListener('dragstart', (e) => {
+      e.dataTransfer.setData('text/plain', e.target.id);
     });
+  });
 
-    // Dropdown change event
-    const dropdown = document.getElementById('dropdown');
-    dropdown.addEventListener('change', (e) => {
-      console.log('Selected option:', e.target.value);
-    });
+  dropZone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+  });
 
-    // Text input event
-    const textInput = document.getElementById('textInput');
-    textInput.addEventListener('input', (e) => {
-      console.log('Input value:', e.target.value);
-    });
+  dropZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    const id = e.dataTransfer.getData('text');
+    const draggableElement = document.getElementById(id);
+    dropZone.appendChild(draggableElement);
+  });
 
-    // Drag and Drop
-    const draggables = document.querySelectorAll('.draggable');
-    const dropZone = document.getElementById('dropZone');
+  // Slider
+  const slider = document.getElementById('slider');
+  const sliderValue = document.getElementById('sliderValue');
+  slider.addEventListener('input', (e) => {
+    sliderValue.textContent = e.target.value;
+  });
 
-    draggables.forEach(draggable => {
-      draggable.addEventListener('dragstart', (e) => {
-        e.dataTransfer.setData('text/plain', e.target.id);
-      });
-    });
+  // Delayed Button
+  const delayedButton = document.getElementById('delayedButton');
+  const delayedResult = document.getElementById('delayedResult');
+  delayedButton.addEventListener('click', () => {
+    delayedResult.textContent = 'Processing...';
+    setTimeout(() => {
+      delayedResult.textContent = 'Action completed after delay!';
+    }, 2000);
+  });
 
-    dropZone.addEventListener('dragover', (e) => {
-      e.preventDefault();
-    });
-
-    dropZone.addEventListener('drop', (e) => {
-      e.preventDefault();
-      const id = e.dataTransfer.getData('text');
-      const draggableElement = document.getElementById(id);
-      dropZone.appendChild(draggableElement);
-    });
-
-    // Slider
-    const slider = document.getElementById('slider');
-    const sliderValue = document.getElementById('sliderValue');
-    slider.addEventListener('input', (e) => {
-      sliderValue.textContent = e.target.value;
-    });
-
-    // Delayed Button
-    const delayedButton = document.getElementById('delayedButton');
-    const delayedResult = document.getElementById('delayedResult');
-    delayedButton.addEventListener('click', () => {
-      delayedResult.textContent = 'Processing...';
-      setTimeout(() => {
-        delayedResult.textContent = 'Action completed after delay!';
-      }, 2000);
-    });
-
-    // Progress Bar
-    const progressBar = document.getElementById('progressBar').firstElementChild;
-    const startProgressButton = document.getElementById('startProgress');
-    startProgressButton.addEventListener('click', () => {
-      let width = 0;
-      const interval = setInterval(() => {
-        if (width >= 100) {
-          clearInterval(interval);
-        } else {
-          width++;
-          progressBar.style.width = width + '%';
-        }
-      }, 50);
-    });
-
-    // Load More Content
-    const loadMoreContent = document.getElementById('loadMoreContent');
-    const loadMoreButton = document.getElementById('loadMoreButton');
-    let loadCount = 0;
-    loadMoreButton.addEventListener('click', () => {
-      loadCount++;
-      const newContent = document.createElement('p');
-      newContent.textContent = `New content ${loadCount} loaded.`;
-      loadMoreContent.appendChild(newContent);
-    });
-
-    // Form Validation
-    const registrationForm = document.getElementById('registrationForm');
-    const formResult = document.getElementById('formResult');
-    registrationForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const username = document.getElementById('username').value;
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      const confirmPassword = document.getElementById('confirmPassword').value;
-
-      if (password !== confirmPassword) {
-        formResult.textContent = 'Passwords do not match!';
-        return;
-      }
-
-      formResult.textContent = `Registration successful for ${username}!`;
-    });
-
-    // Color Picker
-    const colorPicker = document.getElementById('colorPicker');
-    const selectedColor = document.getElementById('selectedColor');
-    colorPicker.addEventListener('input', (e) => {
-      selectedColor.textContent = e.target.value;
-    });
-
-    // Live Form Validation
-    const liveValidationForm = document.getElementById('liveValidationForm');
-    const nameInput = document.getElementById('nameInput');
-    const emailInput = document.getElementById('emailInput');
-    const phoneInput = document.getElementById('phoneInput');
-    const nameError = document.getElementById('nameError');
-    const emailError = document.getElementById('emailError');
-    const phoneError = document.getElementById('phoneError');
-    const liveValidationResult = document.getElementById('liveValidationResult');
-
-    nameInput.addEventListener('input', validateName);
-    emailInput.addEventListener('input', validateEmail);
-    phoneInput.addEventListener('input', validatePhone);
-
-    function validateName() {
-      if (nameInput.value.length < 3) {
-        nameError.textContent = 'Name must be at least 3 characters long';
+  // Progress Bar
+  const progressBar = document.getElementById('progressBar').firstElementChild;
+  const startProgressButton = document.getElementById('startProgress');
+  startProgressButton.addEventListener('click', () => {
+    let width = 0;
+    const interval = setInterval(() => {
+      if (width >= 100) {
+        clearInterval(interval);
       } else {
-        nameError.textContent = '';
+        width++;
+        progressBar.style.width = width + '%';
       }
+    }, 50);
+  });
+
+  // Load More Content
+  const loadMoreContent = document.getElementById('loadMoreContent');
+  const loadMoreButton = document.getElementById('loadMoreButton');
+  let loadCount = 0;
+  loadMoreButton.addEventListener('click', () => {
+    loadCount++;
+    const newContent = document.createElement('p');
+    newContent.textContent = `New content ${loadCount} loaded.`;
+    loadMoreContent.appendChild(newContent);
+  });
+
+  // Form Validation
+  const registrationForm = document.getElementById('registrationForm');
+  const formResult = document.getElementById('formResult');
+  registrationForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+
+    if (password !== confirmPassword) {
+      formResult.textContent = 'Passwords do not match!';
+      return;
     }
 
-    function validateEmail() {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(emailInput.value)) {
-        emailError.textContent = 'Please enter a valid email address';
-      } else {
-        emailError.textContent = '';
-      }
+    formResult.textContent = `Registration successful for ${username}!`;
+  });
+
+  // Color Picker
+  const colorPicker = document.getElementById('colorPicker');
+  const selectedColor = document.getElementById('selectedColor');
+  colorPicker.addEventListener('input', (e) => {
+    selectedColor.textContent = e.target.value;
+  });
+
+  // Live Form Validation
+  const liveValidationForm = document.getElementById('liveValidationForm');
+  const nameInput = document.getElementById('nameInput');
+  const emailInput = document.getElementById('emailInput');
+  const phoneInput = document.getElementById('phoneInput');
+  const nameError = document.getElementById('nameError');
+  const emailError = document.getElementById('emailError');
+  const phoneError = document.getElementById('phoneError');
+  const liveValidationResult = document.getElementById('liveValidationResult');
+
+  nameInput.addEventListener('input', validateName);
+  emailInput.addEventListener('input', validateEmail);
+  phoneInput.addEventListener('input', validatePhone);
+
+  function validateName() {
+    if (nameInput.value.length < 3) {
+      nameError.textContent = 'Name must be at least 3 characters long';
+    } else {
+      nameError.textContent = '';
     }
+  }
 
-    function validatePhone() {
-      const phoneRegex = /^\d{10}$/;
-      if (!phoneRegex.test(phoneInput.value)) {
-        phoneError.textContent = 'Please enter a valid 10-digit phone number';
-      } else {
-        phoneError.textContent = '';
-      }
+  function validateEmail() {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailInput.value)) {
+      emailError.textContent = 'Please enter a valid email address';
+    } else {
+      emailError.textContent = '';
     }
+  }
 
-    liveValidationForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (nameError.textContent === '' && emailError.textContent === '' && phoneError.textContent === '') {
-        liveValidationResult.textContent = 'Form submitted successfully!';
-        liveValidationResult.className = 'success';
-      } else {
-        liveValidationResult.textContent = 'Please correct the errors in the form.';
-        liveValidationResult.className = 'error';
-      }
-    });
-
-    // iFrame
-    const iframeContainer = document.getElementById('iframeContainer');
-    const iframe = document.createElement('iframe');
-    iframe.src = 'https://example.com';
-    iframe.width = '100%';
-    iframe.height = '100%';
-    iframeContainer.appendChild(iframe);
-
-    // Modal Popup
-    const modal = document.getElementById('modal');
-    const openModalBtn = document.getElementById('openModalBtn');
-    const closeModalSpan = document.getElementsByClassName('close')[0];
-
-    openModalBtn.onclick = function() {
-      modal.style.display = 'block';
+  function validatePhone() {
+    const phoneRegex = /^\d{10}$/;
+    if (!phoneRegex.test(phoneInput.value)) {
+      phoneError.textContent = 'Please enter a valid 10-digit phone number';
+    } else {
+      phoneError.textContent = '';
     }
+  }
 
-    closeModalSpan.onclick = function() {
+  liveValidationForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (nameError.textContent === '' && emailError.textContent === '' && phoneError.textContent === '') {
+      liveValidationResult.textContent = 'Form submitted successfully!';
+      liveValidationResult.className = 'success';
+    } else {
+      liveValidationResult.textContent = 'Please correct the errors in the form.';
+      liveValidationResult.className = 'error';
+    }
+  });
+
+  // iFrame
+  const iframeContainer = document.getElementById('iframeContainer');
+  const iframe = document.createElement('iframe');
+  iframe.src = 'https://example.com';
+  iframe.width = '100%';
+  iframe.height = '100%';
+  iframeContainer.appendChild(iframe);
+
+  // Modal Popup
+  const modal = document.getElementById('modal');
+  const openModalBtn = document.getElementById('openModalBtn');
+  const closeModalSpan = document.getElementsByClassName('close')[0];
+
+  openModalBtn.onclick = function() {
+    modal.style.display = 'block';
+  }
+
+  closeModalSpan.onclick = function() {
+    modal.style.display = 'none';
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
       modal.style.display = 'none';
     }
+  }
 
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = 'none';
-      }
+  // File Upload
+  const fileUpload = document.getElementById('fileUpload');
+  const fileUploadResult = document.getElementById('fileUploadResult');
+
+  fileUpload.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      fileUploadResult.textContent = `File selected: ${file.name}`;
+    } else {
+      fileUploadResult.textContent = '';
     }
+  });
 
-    // File Upload
-    const fileUpload = document.getElementById('fileUpload');
-    const fileUploadResult = document.getElementById('fileUploadResult');
+  // Carousel
+  const carousel = document.getElementById('carousel');
+  const carouselItems = carousel.getElementsByClassName('carousel-item');
+  const prevCarouselBtn = document.getElementById('prevCarousel');
+  const nextCarouselBtn = document.getElementById('nextCarousel');
+  let currentCarouselItem = 0;
 
-    fileUpload.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        fileUploadResult.textContent = `File selected: ${file.name}`;
-      } else {
-        fileUploadResult.textContent = '';
-      }
-    });
-
-    // Carousel
-    const carousel = document.getElementById('carousel');
-    const carouselItems = carousel.getElementsByClassName('carousel-item');
-    const prevCarouselBtn = document.getElementById('prevCarousel');
-    const nextCarouselBtn = document.getElementById('nextCarousel');
-    let currentCarouselItem = 0;
-
-    function showCarouselItem(index) {
-      for (let i = 0; i < carouselItems.length; i++) {
-        carouselItems[i].style.transform = `translateX(${100 * (i - index)}%)`;
-      }
+  function showCarouselItem(index) {
+    for (let i = 0; i < carouselItems.length; i++) {
+      carouselItems[i].style.transform = `translateX(${100 * (i - index)}%)`;
     }
+  }
 
-    prevCarouselBtn.addEventListener('click', () => {
-      currentCarouselItem = (currentCarouselItem - 1 + carouselItems.length) % carouselItems.length;
-      showCarouselItem(currentCarouselItem);
-    });
-
-    nextCarouselBtn.addEventListener('click', () => {
-      currentCarouselItem = (currentCarouselItem + 1) % carouselItems.length;
-      showCarouselItem(currentCarouselItem);
-    });
-
+  prevCarouselBtn.addEventListener('click', () => {
+    currentCarouselItem = (currentCarouselItem - 1 + carouselItems.length) % carouselItems.length;
     showCarouselItem(currentCarouselItem);
+  });
 
-  </script>
+  nextCarouselBtn.addEventListener('click', () => {
+    currentCarouselItem = (currentCarouselItem + 1) % carouselItems.length;
+    showCarouselItem(currentCarouselItem);
+  });
+
+  showCarouselItem(currentCarouselItem);
+
+</script>
 </body>
 </html>
